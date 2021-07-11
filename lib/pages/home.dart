@@ -14,18 +14,18 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   void _changeLanguage() {
-      if(Localizations.localeOf(context).languageCode == 'ar'){
-        setState(() {
-          MyApp.setLocale(context, Locale("en"));
-          AppUtils.saveLanguage("en");
-        });
-      }
-      if(Localizations.localeOf(context).languageCode == 'en'){
-        setState(() {
-          MyApp.setLocale(context, Locale("ar"));
-          AppUtils.saveLanguage("ar");
-        });
-      }
+    if (Localizations.localeOf(context).languageCode == 'ar') {
+      setState(() {
+        MyApp.setLocale(context, Locale("en"));
+        AppUtils.saveLanguage("en");
+      });
+    }
+    if (Localizations.localeOf(context).languageCode == 'en') {
+      setState(() {
+        MyApp.setLocale(context, Locale("ar"));
+        AppUtils.saveLanguage("ar");
+      });
+    }
   }
 
   @override
@@ -36,7 +36,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: Center(
         child: Text(
-          AppUtils.translate(context, "Home_page_title"),
+          AppUtils.translate(context, "home_page_title"),
         ),
       ),
       floatingActionButton: FloatingActionButton(

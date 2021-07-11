@@ -1,13 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:notifications_demo/services/app_localization.dart';
+import 'package:notifications_demo/services/localization/app_localization.dart';
 import 'package:notifications_demo/services/app_utils.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
+import 'package:workmanager/workmanager.dart';
 import 'pages/home.dart';
+import 'services/notifications/notification_utils.dart';
 
-void main() async {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Workmanager.initialize(callbackDispatcher,
+      isInDebugMode:
+          true); //to true if still in testing lev turn it to false whenever you are launching the app
+  await Workmanager.registerPeriodicTask("5", simplePeriodicTask,
+      existingWorkPolicy: ExistingWorkPolicy.replace,
+      frequency: Duration(minutes: 15), //when should it check the link
+      initialDelay:
+          Duration(seconds: 5), //duration before showing the notification
+      constraints: Constraints(
+        networkType: NetworkType.connected,
+      ));
   runApp(
     MyApp(
       languageCode:
@@ -38,7 +50,6 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     super.initState();
-
     setLanguage();
   }
 

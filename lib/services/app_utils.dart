@@ -2,11 +2,11 @@ import 'dart:io';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'app_localization.dart';
+import 'localization/app_localization.dart';
 
 class AppUtils {
   static String firebaseToken;
-  static FirebaseMessaging firebaseMesseging = FirebaseMessaging.instance;
+  static FirebaseMessaging firebaseMessaging = FirebaseMessaging.instance;
 
   // language
   static String language;
