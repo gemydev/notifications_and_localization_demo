@@ -7,6 +7,10 @@ import 'package:workmanager/workmanager.dart';
 import 'pages/home.dart';
 import 'services/notifications/notification_utils.dart';
 
+
+// final BehaviorSubject<String> selectNotificationSubject = BehaviorSubject<String>();
+
+
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Workmanager.initialize(callbackDispatcher,
@@ -50,8 +54,23 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     super.initState();
+   // _configureSelectNotificationSubject();
     setLanguage();
   }
+/*
+  @override
+  void dispose() {
+    super.dispose();
+    selectNotificationSubject.close();
+  }
+
+  void _configureSelectNotificationSubject() {
+    selectNotificationSubject.stream.listen((String payload) async {
+      await Navigator.push(context, MaterialPageRoute<void>(
+        builder: (BuildContext context) => MyHomePage(title: "home",),
+      ),);
+    });
+  }*/
 
   setLanguage() async {
     _locale = Locale(widget.languageCode);

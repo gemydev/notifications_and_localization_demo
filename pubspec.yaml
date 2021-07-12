@@ -36,6 +36,7 @@ dependencies:
   workmanager: ^0.2.4
   http: ^0.12.2
   flutter_app_badger: ^1.2.0
+  rxdart: ^0.26.0-nullsafety.1
 
 dev_dependencies:
   flutter_test:
